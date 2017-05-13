@@ -11,16 +11,16 @@ function mapStateToProps(state) {
     return {
         name: state.helloText,
         onHelloClick: () => {
-            alert('Yes')
+            alert('Yes!!')
         }
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        onHelloClick: () => {
-            alert('Yes');
-        }
+        // onHelloClick: () => {
+        //     alert('Yes');
+        // }
     }
 }
 Test = connect(mapStateToProps, mapDispatchToProps)(Test);
