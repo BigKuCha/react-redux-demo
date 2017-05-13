@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Todo from './Todo'
-import {toogleTodo} from '../actions'
+import {toggleToDo} from '../actions'
 
 let TodoList = ({todos, onTodoClick}) => (
     <ul>
@@ -20,6 +20,14 @@ function mapStateToProps(state) {
         todos: state.todos,
     };
 }
+
+function mapDispatchToProps(dispatch) {
+    return {
+        onTodoClick: (id) => {
+            dispatch(toggleToDo(id));
+        }
+    }
+}
 // TodoList.propTypes = {
 //     todos:
 // }
@@ -30,6 +38,6 @@ function mapStateToProps(state) {
 //         text: PropTypes.string.isRequired
 //     }).isRequired).isRequired
 // };
-TodoList = connect(mapStateToProps)(TodoList);
+TodoList = connect(mapStateToProps, mapDispatchToProps)(TodoList);
 
 export default TodoList
