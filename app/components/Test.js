@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-let Test = ({name}) => {
+let Test = ({name, onHelloClick}) => {
     return <div>
         <h1 onClick={() => onHelloClick()}>{name}</h1>
     </div>
