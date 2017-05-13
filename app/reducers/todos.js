@@ -4,24 +4,36 @@ const todo = (state = {}, action) => {
             return {
                 id: action.id,
                 text: action.text,
-                complated: false
+                completed: false
             };
-        default:
-            return state;
+        case 'TOGGLE_TODO':
+            if (state.id !== action.id) {
+                return state
+            }
 
+            return Object.assign({}, state, {
+                completed: !state.completed
+            });
+
+        default:
+            return state
     }
 };
 
 const todos = (state = [], action) => {
-    switch (action) {
+    switch (action.type) {
         case 'ADD_TODO':
             return [
                 ...state,
                 todo(undefined, action)
             ];
+        case 'TOGGLE_TODO':
+            return state.map(t =>
+                todo(t, action)
+            );
         default:
-            return state;
+            return state
     }
 };
 
-export default todos;
+export default todos
